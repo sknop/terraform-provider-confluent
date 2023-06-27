@@ -74,7 +74,7 @@ resource "confluent_private_link_access" "destination-access" {
 }
 
 resource "confluent_kafka_cluster" "destination-cluster" {
-  display_name = "inventory"
+  display_name = "inventory-target"
   availability = "SINGLE_ZONE"
   cloud        = confluent_network.destination-network.cloud
   region       = confluent_network.destination-network.region
@@ -94,7 +94,7 @@ resource "confluent_kafka_cluster" "destination-cluster" {
 }
 
 resource "confluent_kafka_cluster" "source-cluster" {
-  display_name = "inventory"
+  display_name = "inventory-source"
   availability = "SINGLE_ZONE"
   cloud        = confluent_network.source-network.cloud
   region       = confluent_network.source-network.region
