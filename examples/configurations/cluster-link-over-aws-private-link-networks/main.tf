@@ -2,7 +2,7 @@ terraform {
   required_providers {
     confluent = {
       source  = "confluentinc/confluent"
-      version = "1.35.0"
+      version = "1.46.0"
     }
 
     aws = {
@@ -30,7 +30,7 @@ resource "confluent_network" "source-network" {
   cloud            = "AWS"
   region           = var.region
   connection_types = ["PRIVATELINK"]
-  zones            = ["usw2-az1", "usw2-az2", "usw2-az3"]
+  zones            = var.zones
   environment {
     id = confluent_environment.main.id
   }
@@ -41,7 +41,7 @@ resource "confluent_network" "destination-network" {
   cloud            = "AWS"
   region           = var.region
   connection_types = ["PRIVATELINK"]
-  zones            = ["usw2-az1", "usw2-az2", "usw2-az3"]
+  zones            = var.zones
   environment {
     id = confluent_environment.main.id
   }
